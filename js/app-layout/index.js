@@ -5,14 +5,12 @@ import '../app-core/index';
 import HomeController from './controllers/home.controller';
 
 import PhotosService from './services/photos.service';
-import sarahImage from './directives/photo.directive.js';
+import sarahPhoto from './directives/photos.directive';
 
 
 angular
-  .module('app.layout', [])
+  .module('app.layout', ['app.core'])
   .controller('HomeController', HomeController)
   .service('PhotosService', PhotosService)
-  .directive('sarahImage', sarahImage)
-
-
+  .directive('sarahPhoto', sarahPhoto)
 ;

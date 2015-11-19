@@ -75,14 +75,15 @@ var HomeController = function HomeController(PhotosService) {
 
   var vm = this;
 
-  vm.photos = [];
+  // vm.photos = [];
 
-  getAllPhotos();
+  getPhotos();
 
-  function getAllPhotos() {
+  function getPhotos() {
     PhotosService.getPhotos().then(function (res) {
       console.log(res);
       vm.photos = res.data.results;
+      console.log(vm.photos);
     });
   }
 };
@@ -98,25 +99,31 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var sarahPhoto = function sarahPhoto($state, PhotosService) {
+var sarahPhoto = function sarahPhoto(PhotosService) {
 
   return {
-    restrict: 'AE',
+    restrict: 'E',
     scope: {
-      photo: '=photo'
+      photo: '='
     },
-    template: '\n      <ul>\n        <li>\n          <img ng-src="{{ photo.photo }}">\n\n          <span><i class="fa fa-heart shown"></span>\n          \n          <a class="likes">{{ photo.likes }}<i class="fa fa-heart"></i></a>\n        </li>\n      </ul>\n    ',
-    link: function link(scope, element, attrs) {
-      element.on('click', function () {
-        PhotosService.addHeart(scope.photo).then(function (res) {
-          console.log(res);
-        });
-      });
-    }
+    template: '\n      <div> \n          <img ng-src="{{ photo.photo }}">\n          <span><i class="fa fa-heart shown"></span>\n          <a class="liked">{{ vm.photos.likes }}</a>\n      </div>\n    ',
+    controller: 'HomeController as vm'
   };
 };
 
-sarahPhoto.$inject = ['$state', 'PhotosService'];
+// link: function (scope, element, attrs) {
+//   element.on('dblclick', function () {
+//     element.addClass('liked');
+//     $timeout(function () {
+//       element.removeClass('liked');
+
+//     }, 1000);
+//     PhotosService.addHeart(scope.photo).then( (res) => {
+//       console.log(res);
+//     });
+//   });
+// }
+sarahPhoto.$inject = ['PhotoService'];
 
 exports['default'] = sarahPhoto;
 module.exports = exports['default'];
@@ -140,13 +147,13 @@ var _servicesPhotosService = require('./services/photos.service');
 
 var _servicesPhotosService2 = _interopRequireDefault(_servicesPhotosService);
 
-var _directivesPhotoDirectiveJs = require('./directives/photo.directive.js');
+var _directivesPhotosDirective = require('./directives/photos.directive');
 
-var _directivesPhotoDirectiveJs2 = _interopRequireDefault(_directivesPhotoDirectiveJs);
+var _directivesPhotosDirective2 = _interopRequireDefault(_directivesPhotosDirective);
 
-_angular2['default'].module('app.layout', []).controller('HomeController', _controllersHomeController2['default']).service('PhotosService', _servicesPhotosService2['default']).directive('sarahImage', _directivesPhotoDirectiveJs2['default']);
+_angular2['default'].module('app.layout', ['app.core']).controller('HomeController', _controllersHomeController2['default']).service('PhotosService', _servicesPhotosService2['default']).directive('sarahPhoto', _directivesPhotosDirective2['default']);
 
-},{"../app-core/index":3,"./controllers/home.controller":4,"./directives/photo.directive.js":5,"./services/photos.service":7,"angular":14}],7:[function(require,module,exports){
+},{"../app-core/index":3,"./controllers/home.controller":4,"./directives/photos.directive":5,"./services/photos.service":7,"angular":14}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
