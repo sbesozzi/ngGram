@@ -10,7 +10,6 @@ let HomeController = function(PhotosService) {
     PhotosService.getPhotos().then( (res) => {
       console.log(res);
       vm.photos = res.data.results;
-      console.log(vm.photos);
     });
   }
 

@@ -83,7 +83,6 @@ var HomeController = function HomeController(PhotosService) {
     PhotosService.getPhotos().then(function (res) {
       console.log(res);
       vm.photos = res.data.results;
-      console.log(vm.photos);
     });
   }
 };
