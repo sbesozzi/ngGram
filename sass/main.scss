@@ -1,6 +1,16 @@
 // Put any @imports here
 // See Readme for a list of supported ones
+@import "foundation";
 
 body {
   background: #e2ebf3;
+}
+
+.container {
+  width: 800px;
+  margin: 20px auto;
+}
+
+.panel {
+  cursor: pointer;
 }
