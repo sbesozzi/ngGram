@@ -65,7 +65,7 @@ var _constantsParseConstant2 = _interopRequireDefault(_constantsParseConstant);
 
 _angular2['default'].module('app.core', ['ui.router']).config(_config2['default']).constant('PARSE', _constantsParseConstant2['default']);
 
-},{"./config":1,"./constants/parse.constant":2,"angular":13,"angular-ui-router":11}],4:[function(require,module,exports){
+},{"./config":1,"./constants/parse.constant":2,"angular":14,"angular-ui-router":12}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -77,10 +77,11 @@ var HomeController = function HomeController(PhotosService) {
 
   vm.photos = [];
 
-  getPhotos();
+  getAllPhotos();
 
-  function getPhotos() {
+  function getAllPhotos() {
     PhotosService.getPhotos().then(function (res) {
+      console.log(res);
       vm.photos = res.data.results;
     });
   }
@@ -92,6 +93,35 @@ exports['default'] = HomeController;
 module.exports = exports['default'];
 
 },{}],5:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var sarahPhoto = function sarahPhoto($state, PhotosService) {
+
+  return {
+    restrict: 'AE',
+    scope: {
+      photo: '=photo'
+    },
+    template: '\n      <ul>\n        <li>\n          <img ng-src="{{ photo.photo }}">\n\n          <span><i class="fa fa-heart shown"></span>\n          \n          <a class="likes">{{ photo.likes }}<i class="fa fa-heart"></i></a>\n        </li>\n      </ul>\n    ',
+    link: function link(scope, element, attrs) {
+      element.on('click', function () {
+        PhotosService.addHeart(scope.photo).then(function (res) {
+          console.log(res);
+        });
+      });
+    }
+  };
+};
+
+sarahPhoto.$inject = ['$state', 'PhotosService'];
+
+exports['default'] = sarahPhoto;
+module.exports = exports['default'];
+
+},{}],6:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -110,9 +140,13 @@ var _servicesPhotosService = require('./services/photos.service');
 
 var _servicesPhotosService2 = _interopRequireDefault(_servicesPhotosService);
 
-_angular2['default'].module('app.layout', []).service('PhotosService', _servicesPhotosService2['default']).controller('HomeController', _controllersHomeController2['default']);
+var _directivesPhotoDirectiveJs = require('./directives/photo.directive.js');
 
-},{"../app-core/index":3,"./controllers/home.controller":4,"./services/photos.service":6,"angular":13}],6:[function(require,module,exports){
+var _directivesPhotoDirectiveJs2 = _interopRequireDefault(_directivesPhotoDirectiveJs);
+
+_angular2['default'].module('app.layout', []).controller('HomeController', _controllersHomeController2['default']).service('PhotosService', _servicesPhotosService2['default']).directive('sarahImage', _directivesPhotoDirectiveJs2['default']);
+
+},{"../app-core/index":3,"./controllers/home.controller":4,"./directives/photo.directive.js":5,"./services/photos.service":7,"angular":14}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -124,9 +158,13 @@ var PhotosService = function PhotosService($http, PARSE) {
 
   this.getPhotos = getPhotos;
 
+  this.addHeart = addHeart;
+
   function getPhotos() {
     return $http.get(url, PARSE.CONFIG);
   }
+
+  function addHeart() {}
 };
 
 PhotosService.$inject = ['$http', 'PARSE'];
@@ -134,7 +172,7 @@ PhotosService.$inject = ['$http', 'PARSE'];
 exports['default'] = PhotosService;
 module.exports = exports['default'];
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -159,7 +197,7 @@ PhotosAddController.$inject = ['$state', 'PhotoService'];
 exports['default'] = PhotosAddController;
 module.exports = exports['default'];
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -180,7 +218,7 @@ var _servicesPhotoService2 = _interopRequireDefault(_servicesPhotoService);
 
 _angular2['default'].module('app.photos', ['app.core']).controller('PhotosAddController', _controllersPhotosAddController2['default']).service('PhotoService', _servicesPhotoService2['default']);
 
-},{"../app-core/index":3,"./controllers/photos-add.controller":7,"./services/photo.service":9,"angular":13}],9:[function(require,module,exports){
+},{"../app-core/index":3,"./controllers/photos-add.controller":8,"./services/photo.service":10,"angular":14}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -188,7 +226,7 @@ Object.defineProperty(exports, '__esModule', {
 });
 var PhotoService = function PhotoService($http, PARSE) {
 
-  var url = PARSE.URL + 'classes/photo';
+  var url = PARSE.URL + 'classes/photos';
 
   this.addPhoto = addPhoto;
 
@@ -207,7 +245,7 @@ PhotoService.$inject = ['$http', 'PARSE'];
 exports['default'] = PhotoService;
 module.exports = exports['default'];
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 // Import core files
 'use strict';
 
@@ -227,7 +265,7 @@ require('./app-photos/index');
 
 _angular2['default'].module('app', ['app.core', 'app.layout', 'app.photos']);
 
-},{"./app-core/index":3,"./app-layout/index":5,"./app-photos/index":8,"angular":13}],11:[function(require,module,exports){
+},{"./app-core/index":3,"./app-layout/index":6,"./app-photos/index":9,"angular":14}],12:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4598,7 +4636,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.7
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33503,11 +33541,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":12}]},{},[10])
+},{"./angular":13}]},{},[11])
 
 
 //# sourceMappingURL=main.js.map

@@ -1,6 +1,6 @@
 let PhotoService = function($http, PARSE) {
   
-  let url = PARSE.URL + 'classes/photo';
+  let url = PARSE.URL + 'classes/photos';
 
   this.addPhoto = addPhoto;
 

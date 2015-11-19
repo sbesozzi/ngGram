@@ -1,9 +1,11 @@
 // Put any @imports here
 // See Readme for a list of supported ones
 @import "foundation";
+@import "font-awesome";
+
 
 body {
-  background: #e2ebf3;
+  background: #FAFAFA;
 }
 
 .container {
@@ -13,4 +15,76 @@ body {
 
 .panel {
   cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+.top-bar {
+  background: #FFFFFF;
+  height: 3rem;
+
+  .title-area .name a {
+    color: #09477D;
+    font-size: 1.1rem;
+
+  }
+}
+
+nav {
+  border-bottom: 1px solid #EDEEEE;
+
+  .top-bar-section .right {
+    // border-bottom: 1px solid #cccccc;
+    height: 25px;
+
+    li {
+      margin-left: 15px;
+     } 
+  }
+
+  .top-bar-section li a:not(.button) {
+      background: #FFFFFF !important;
+      color: #84878B; 
+      font-size: 0.90rem 
+  }
+
+  .top-bar-section li a:not(.button):hover {
+      background: #FFFFFF !important;
+      color: #09477D;   
+  }
+
+  .top-bar-section ul li.active > a {
+      background: #FFFFFF !important;   
+  }
+
+  .top-bar-section ul li.active > a:hover {
+      background: #FFFFFF !important;   
+  }
+}
+
+.add {
+  width: 500px;
+  margin: 20px auto;
+
+
+  h5 {
+    color: #666666;
+  }
+
+  input {
+    border-radius: 4px;
+  }
+
+  button {
+    border-radius: 4px;
+    background-color: #AFAFAF;
+  }
+  
+}
+
+.home {
+  width: 800px;
+  margin: 20px auto;
 }

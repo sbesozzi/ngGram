@@ -4,8 +4,14 @@ let PhotosService = function($http, PARSE) {
 
   this.getPhotos = getPhotos;
 
+  this.addHeart = addHeart;
+
   function getPhotos () {
     return $http.get(url, PARSE.CONFIG);
+  }
+
+  function addHeart () {
+    
   }
   
 };

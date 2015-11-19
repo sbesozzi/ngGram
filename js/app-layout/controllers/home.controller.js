@@ -4,10 +4,11 @@ let HomeController = function(PhotosService) {
 
   vm.photos = [];
 
-  getPhotos();
+  getAllPhotos();
 
-  function getPhotos () {
+  function getAllPhotos () {
     PhotosService.getPhotos().then( (res) => {
+      console.log(res);
       vm.photos = res.data.results;
     });
   }
