@@ -81,7 +81,7 @@ var HomeController = function HomeController(PhotosService) {
 
   function getPhotos() {
     PhotosService.getPhotos().then(function (res) {
-      console.log(res);
+      // console.log(res);
       vm.photos = res.data.results;
     });
   }
@@ -98,31 +98,31 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var sarahPhoto = function sarahPhoto(PhotosService) {
+var sarahPhoto = function sarahPhoto(PhotosService, $timeout) {
 
   return {
     restrict: 'E',
     scope: {
       photo: '='
     },
-    template: '\n      <div> \n          <img ng-src="{{ photo.photo }}">\n          <span><i class="fa fa-heart shown"></span>\n          <a class="liked">{{ vm.photos.likes }}</a>\n      </div>\n    ',
-    controller: 'HomeController as vm'
+    template: ' \n      <div class="photos">\n        <img ng-src="{{ photo.photo }}" ng-dblclick="vm.addLike">\n        <span class="hidden"><i class="fa fa-heart"></i\n>        \n        <div class="add-likes">{{ photo.likes }}<i class="fa fa-heart"></i></div>\n      </div>\n \n    ',
+    controller: 'HomeController as vm',
+    link: function link(scope, element, attrs) {
+      element.on('dblclick', function () {
+        // console.log('clicked!');
+        element.addClass('hidden');
+        $timeout(function () {
+          element.removeClass('hidden');
+        }, 1000);
+        PhotosService.addLike(scope.photo).then(function (res) {
+          console.log(res);
+        });
+      });
+    }
   };
 };
 
-// link: function (scope, element, attrs) {
-//   element.on('dblclick', function () {
-//     element.addClass('liked');
-//     $timeout(function () {
-//       element.removeClass('liked');
-
-//     }, 1000);
-//     PhotosService.addHeart(scope.photo).then( (res) => {
-//       console.log(res);
-//     });
-//   });
-// }
-sarahPhoto.$inject = ['PhotoService'];
+sarahPhoto.$inject = ['PhotoService', '$timeout'];
 
 exports['default'] = sarahPhoto;
 module.exports = exports['default'];
@@ -164,13 +164,16 @@ var PhotosService = function PhotosService($http, PARSE) {
 
   this.getPhotos = getPhotos;
 
-  this.addHeart = addHeart;
+  this.addLike = addLike;
 
   function getPhotos() {
     return $http.get(url, PARSE.CONFIG);
   }
 
-  function addHeart() {}
+  function addLike(photoObj) {
+    photoObj.likes = photoObj.likes + 1;
+    return $http.put(url + '/' + photoObj.objectId, photoObj, PARSE);
+  }
 };
 
 PhotosService.$inject = ['$http', 'PARSE'];

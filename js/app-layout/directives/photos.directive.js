@@ -1,34 +1,36 @@
-let sarahPhoto = function(PhotosService) {
+let sarahPhoto = function(PhotosService, $timeout) {
   
   return {
     restrict: 'E',
     scope: {
       photo: '='
     },
-    template: `
-      <div> 
-          <img ng-src="{{ photo.photo }}">
-          <span><i class="fa fa-heart shown"></span>
-          <a class="liked">{{ vm.photos.likes }}</a>
+    template: ` 
+      <div class="photos">
+        <img ng-src="{{ photo.photo }}" ng-dblclick="vm.addLike">
+        <span class="hidden"><i class="fa fa-heart"></i
+>        
+        <div class="add-likes">{{ photo.likes }}<i class="fa fa-heart"></i></div>
       </div>
+ 
     `,
     controller: 'HomeController as vm',
-    // link: function (scope, element, attrs) {
-    //   element.on('dblclick', function () {
-    //     element.addClass('liked');
-    //     $timeout(function () {
-    //       element.removeClass('liked');
-
-    //     }, 1000);
-    //     PhotosService.addHeart(scope.photo).then( (res) => {
-    //       console.log(res);
-    //     });
-    //   });
-    // }
+    link: function (scope, element, attrs) {
+      element.on('dblclick', function () {
+        // console.log('clicked!');
+        element.addClass('hidden');
+        $timeout(function () {
+          element.removeClass('hidden');
+        }, 1000);
+        PhotosService.addLike(scope.photo).then( (res) => {
+          console.log(res);
+        });
+      });
+    }
   };
 
 };
 
-sarahPhoto.$inject = ['PhotoService'];
+sarahPhoto.$inject = ['PhotoService', '$timeout'];
 
 export default sarahPhoto;

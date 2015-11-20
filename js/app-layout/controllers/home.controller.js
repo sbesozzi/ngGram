@@ -8,7 +8,7 @@ let HomeController = function(PhotosService) {
 
   function getPhotos () {
     PhotosService.getPhotos().then( (res) => {
-      console.log(res);
+      // console.log(res);
       vm.photos = res.data.results;
     });
   }

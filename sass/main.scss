@@ -85,6 +85,34 @@ nav {
 }
 
 .home {
-  width: 800px;
+  width: 900px;
   margin: 20px auto;
 }
+
+.photos {
+  width: 100%;
+  margin: auto;
+
+  img {
+    margin: 15px;
+    width: 30%;
+    height: auto;
+    display: inline-block;
+    float: left;
+  }
+
+  .fa-heart {
+    color: #FFFFFF;
+  }
+
+  .hidden {
+    position: absolute;
+    left: 40%;
+    top: 35%;
+  }
+
+ 
+
+}
+
+

@@ -8457,7 +8457,23 @@ nav {
     background-color: #AFAFAF; }
 
 .home {
-  width: 800px;
+  width: 900px;
   margin: 20px auto; }
+
+.photos {
+  width: 100%;
+  margin: auto; }
+  .photos img {
+    margin: 15px;
+    width: 30%;
+    height: auto;
+    display: inline-block;
+    float: left; }
+  .photos .fa-heart {
+    color: #FFFFFF; }
+  .photos .hidden {
+    position: absolute;
+    left: 40%;
+    top: 35%; }
 
 /*# sourceMappingURL=main.css.map */

@@ -4,14 +4,15 @@ let PhotosService = function($http, PARSE) {
 
   this.getPhotos = getPhotos;
 
-  this.addHeart = addHeart;
+  this.addLike = addLike;
 
   function getPhotos () {
     return $http.get(url, PARSE.CONFIG);
   }
 
-  function addHeart () {
-    
+  function addLike (photoObj) {
+    photoObj.likes = photoObj.likes + 1;
+    return $http.put(url + '/' + photoObj.objectId, photoObj, PARSE);
   }
   
 };
