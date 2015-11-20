@@ -110,9 +110,9 @@ var sarahPhoto = function sarahPhoto(PhotosService, $timeout) {
     link: function link(scope, element, attrs) {
       element.on('dblclick', function () {
         // console.log('clicked!');
-        element.addClass('hidden');
+        element.find('span').removeClass('hidden').addClass('shown');
         $timeout(function () {
-          element.removeClass('hidden');
+          element.find('span').removeClass('shown').addClass('hidden');
         }, 1000);
         PhotosService.addLike(scope.photo).then(function (res) {
           console.log(res);

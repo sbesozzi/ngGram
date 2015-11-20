@@ -8410,10 +8410,6 @@ th.hide-for-touch {
 body {
   background: #FAFAFA; }
 
-.container {
-  width: 800px;
-  margin: 20px auto; }
-
 .panel {
   cursor: pointer; }
 
@@ -8457,11 +8453,11 @@ nav {
     background-color: #AFAFAF; }
 
 .home {
-  width: 900px;
-  margin: 20px auto; }
+  width: 100%;
+  margin: auto; }
 
 .photos {
-  width: 100%;
+  width: 900px;
   margin: auto; }
   .photos img {
     margin: 15px;
@@ -8474,6 +8470,13 @@ nav {
   .photos .hidden {
     position: absolute;
     left: 40%;
-    top: 35%; }
+    top: 35%;
+    font-size: 50px;
+    visibility: hidden; }
+  .photos .shown {
+    position: absolute;
+    left: 40%;
+    top: 35%;
+    font-size: 50px; }
 
 /*# sourceMappingURL=main.css.map */

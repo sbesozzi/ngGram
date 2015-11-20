@@ -8,11 +8,6 @@ body {
   background: #FAFAFA;
 }
 
-.container {
-  width: 800px;
-  margin: 20px auto;
-}
-
 .panel {
   cursor: pointer;
 }
@@ -28,7 +23,6 @@ ul {
   .title-area .name a {
     color: #09477D;
     font-size: 1.1rem;
-
   }
 }
 
@@ -85,12 +79,12 @@ nav {
 }
 
 .home {
-  width: 900px;
-  margin: 20px auto;
+  width: 100%;
+  margin: auto;
 }
 
 .photos {
-  width: 100%;
+  width: 900px;
   margin: auto;
 
   img {
@@ -109,6 +103,15 @@ nav {
     position: absolute;
     left: 40%;
     top: 35%;
+    font-size: 50px;
+    visibility: hidden;
+  }
+
+  .shown {
+    position: absolute;
+    left: 40%;
+    top: 35%;
+    font-size: 50px;
   }
 
  
