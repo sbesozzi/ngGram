@@ -105,7 +105,7 @@ var sarahPhoto = function sarahPhoto(PhotosService, $timeout) {
     scope: {
       photo: '='
     },
-    template: ' \n      <div class="photos">\n        <img ng-src="{{ photo.photo }}" ng-dblclick="vm.addLike">\n        <span class="hidden"><i class="fa fa-heart"></i\n>        \n        <div class="add-likes">{{ photo.likes }}<i class="fa fa-heart"></i></div>\n      </div>\n \n    ',
+    template: ' \n      <div class="photos">\n        <img ng-src="{{ photo.photo }}" ng-dblclick="vm.addLike">\n        <span class="hidden"><i class="fa fa-heart"></i>        \n      </div>\n \n    ',
     controller: 'HomeController as vm',
     link: function link(scope, element, attrs) {
       element.on('dblclick', function () {

@@ -8,9 +8,7 @@ let sarahPhoto = function(PhotosService, $timeout) {
     template: ` 
       <div class="photos">
         <img ng-src="{{ photo.photo }}" ng-dblclick="vm.addLike">
-        <span class="hidden"><i class="fa fa-heart"></i
->        
-        <div class="add-likes">{{ photo.likes }}<i class="fa fa-heart"></i></div>
+        <span class="hidden"><i class="fa fa-heart"></i>        
       </div>
  
     `,
