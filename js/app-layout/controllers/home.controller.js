@@ -2,7 +2,7 @@ let HomeController = function(PhotosService) {
   
   let vm = this;
 
-  // vm.photos = [];
+  vm.photos = [];
 
   getPhotos();
 

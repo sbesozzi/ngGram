@@ -1,6 +1,7 @@
 ## ngGram
 
 > Creating a faux Instagram using AngularJS and PARSE
+- Deployed version at http://sbesozzi.tiy.nggram.surge.sh/#/
 
 ## Usage
 

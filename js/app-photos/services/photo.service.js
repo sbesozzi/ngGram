@@ -6,6 +6,7 @@ let PhotoService = function($http, PARSE) {
 
   function Photo (photoObj) {
     this.photo = photoObj.photo;
+    this.likes = photoObj.likes;
   }
 
   function addPhoto (photoObj) {

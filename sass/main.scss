@@ -79,43 +79,40 @@ nav {
 }
 
 .home {
-  width: 100%;
+  width: 900px;
   margin: auto;
 }
 
-.photos {
-  width: 900px;
+.photo {
+  position: relative;
   margin: auto;
+  margin: 15px;
+  width: 30%;
+  height: auto;
+  display: inline-block;
+  float: left;
 
-  img {
-    margin: 15px;
-    width: 30%;
-    height: auto;
-    display: inline-block;
-    float: left;
+
+  .hidden {
+    position: absolute;
+    left: 42%;
+    top: 35%;
+    font-size: 50px;
+    display: none;
+  }
+
+  .shown {
+    position: absolute;
+    left: 42%;
+    top: 35%;
+    font-size: 50px;
+    opacity : 1;
+
   }
 
   .fa-heart {
     color: #FFFFFF;
   }
 
-  .hidden {
-    position: absolute;
-    left: 40%;
-    top: 35%;
-    font-size: 50px;
-    visibility: hidden;
-  }
-
-  .shown {
-    position: absolute;
-    left: 40%;
-    top: 35%;
-    font-size: 50px;
-  }
-
- 
-
 }
-
 

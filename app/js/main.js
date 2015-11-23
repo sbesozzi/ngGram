@@ -75,7 +75,7 @@ var HomeController = function HomeController(PhotosService) {
 
   var vm = this;
 
-  // vm.photos = [];
+  vm.photos = [];
 
   getPhotos();
 
@@ -101,19 +101,23 @@ Object.defineProperty(exports, '__esModule', {
 var sarahPhoto = function sarahPhoto(PhotosService, $timeout) {
 
   return {
-    restrict: 'E',
+    restrict: 'AE',
+    replace: true,
     scope: {
       photo: '='
     },
-    template: ' \n      <div class="photos">\n        <img ng-src="{{ photo.photo }}" ng-dblclick="vm.addLike">\n        <span class="hidden"><i class="fa fa-heart"></i>        \n      </div>\n \n    ',
+    template: ' \n      <div class="photo">\n        <img ng-src="{{ photo.photo }}">\n        <div class="hidden"><i class="fa fa-heart"></i></div>   \n        <p class="likes">{{ photo.likes }}</p>\n      </div>\n    ',
+
     controller: 'HomeController as vm',
     link: function link(scope, element, attrs) {
       element.on('dblclick', function () {
-        // console.log('clicked!');
-        element.find('span').removeClass('hidden').addClass('shown');
+        console.log('clicked!');
+
+        element.find('div').removeClass('hidden').addClass('shown');
         $timeout(function () {
-          element.find('span').removeClass('shown').addClass('hidden');
+          element.find('div').removeClass('shown').addClass('hidden');
         }, 1000);
+
         PhotosService.addLike(scope.photo).then(function (res) {
           console.log(res);
         });
@@ -163,7 +167,6 @@ var PhotosService = function PhotosService($http, PARSE) {
   var url = PARSE.URL + 'classes/photos';
 
   this.getPhotos = getPhotos;
-
   this.addLike = addLike;
 
   function getPhotos() {
@@ -171,8 +174,9 @@ var PhotosService = function PhotosService($http, PARSE) {
   }
 
   function addLike(photoObj) {
+    console.log('photo liked');
     photoObj.likes = photoObj.likes + 1;
-    return $http.put(url + '/' + photoObj.objectId, photoObj, PARSE);
+    return $http.put(url + '/' + photoObj.objectId, photoObj, PARSE.CONFIG);
   }
 };
 
@@ -241,6 +245,7 @@ var PhotoService = function PhotoService($http, PARSE) {
 
   function Photo(photoObj) {
     this.photo = photoObj.photo;
+    this.likes = photoObj.likes;
   }
 
   function addPhoto(photoObj) {

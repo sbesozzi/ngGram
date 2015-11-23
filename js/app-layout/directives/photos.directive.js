@@ -1,25 +1,29 @@
 let sarahPhoto = function(PhotosService, $timeout) {
   
   return {
-    restrict: 'E',
+    restrict: 'AE',
+    replace : true,
     scope: {
       photo: '='
     },
     template: ` 
-      <div class="photos">
-        <img ng-src="{{ photo.photo }}" ng-dblclick="vm.addLike">
-        <span class="hidden"><i class="fa fa-heart"></i>        
+      <div class="photo">
+        <img ng-src="{{ photo.photo }}">
+        <div class="hidden"><i class="fa fa-heart"></i></div>   
+        <p class="likes">{{ photo.likes }}</p>
       </div>
- 
     `,
+
     controller: 'HomeController as vm',
     link: function (scope, element, attrs) {
-      element.on('dblclick', function () {
-        // console.log('clicked!');
-        element.find('span').removeClass('hidden').addClass('shown');
+      element.on('dblclick', () => {
+        console.log('clicked!');
+
+        element.find('div').removeClass('hidden').addClass('shown');
         $timeout(function () {
-          element.find('span').removeClass('shown').addClass('hidden');
+          element.find('div').removeClass('shown').addClass('hidden');
         }, 1000);
+
         PhotosService.addLike(scope.photo).then( (res) => {
           console.log(res);
         });

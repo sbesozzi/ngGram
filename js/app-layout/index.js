@@ -3,7 +3,6 @@ import angular from 'angular';
 import '../app-core/index';
 
 import HomeController from './controllers/home.controller';
-
 import PhotosService from './services/photos.service';
 import sarahPhoto from './directives/photos.directive';
 

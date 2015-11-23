@@ -8453,30 +8453,30 @@ nav {
     background-color: #AFAFAF; }
 
 .home {
-  width: 100%;
-  margin: auto; }
-
-.photos {
   width: 900px;
   margin: auto; }
-  .photos img {
-    margin: 15px;
-    width: 30%;
-    height: auto;
-    display: inline-block;
-    float: left; }
-  .photos .fa-heart {
-    color: #FFFFFF; }
-  .photos .hidden {
+
+.photo {
+  position: relative;
+  margin: auto;
+  margin: 15px;
+  width: 30%;
+  height: auto;
+  display: inline-block;
+  float: left; }
+  .photo .hidden {
     position: absolute;
-    left: 40%;
+    left: 42%;
     top: 35%;
     font-size: 50px;
-    visibility: hidden; }
-  .photos .shown {
+    display: none; }
+  .photo .shown {
     position: absolute;
-    left: 40%;
+    left: 42%;
     top: 35%;
-    font-size: 50px; }
+    font-size: 50px;
+    opacity: 1; }
+  .photo .fa-heart {
+    color: #FFFFFF; }
 
 /*# sourceMappingURL=main.css.map */
