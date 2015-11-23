@@ -106,7 +106,7 @@ var sarahPhoto = function sarahPhoto(PhotosService, $timeout) {
     scope: {
       photo: '='
     },
-    template: ' \n      <div class="photo">\n        <img ng-src="{{ photo.photo }}">\n        <div class="hidden"><i class="fa fa-heart"></i></div>   \n        <p class="likes">{{ photo.likes }}</p>\n      </div>\n    ',
+    template: ' \n      <div class="photo">\n        <img ng-src="{{ photo.photo }}">\n        <div class="hidden"><i class="fa fa-heart"></i></div>   \n        <p class="likes">{{ photo.likes }} likes</p>\n      </div>\n    ',
 
     controller: 'HomeController as vm',
     link: function link(scope, element, attrs) {
@@ -169,12 +169,18 @@ var PhotosService = function PhotosService($http, PARSE) {
   this.getPhotos = getPhotos;
   this.addLike = addLike;
 
+  function photo(photoObj) {
+    this.photo = photoObj.photo;
+    this.likes = photoObj.likes ? 0 : Number(objectId.likes);
+  }
+
   function getPhotos() {
     return $http.get(url, PARSE.CONFIG);
   }
 
   function addLike(photoObj) {
-    console.log('photo liked');
+    console.log('liked');
+
     photoObj.likes = photoObj.likes + 1;
     return $http.put(url + '/' + photoObj.objectId, photoObj, PARSE.CONFIG);
   }

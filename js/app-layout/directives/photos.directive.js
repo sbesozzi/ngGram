@@ -10,7 +10,7 @@ let sarahPhoto = function(PhotosService, $timeout) {
       <div class="photo">
         <img ng-src="{{ photo.photo }}">
         <div class="hidden"><i class="fa fa-heart"></i></div>   
-        <p class="likes">{{ photo.likes }}</p>
+        <p class="likes">{{ photo.likes }} likes</p>
       </div>
     `,
 

@@ -8421,7 +8421,8 @@ ul {
   height: 3rem; }
   .top-bar .title-area .name a {
     color: #09477D;
-    font-size: 1.1rem; }
+    font-size: 1.1rem;
+    font-family: 'Rochester', cursive; }
 
 nav {
   border-bottom: 1px solid #EDEEEE; }
@@ -8454,7 +8455,8 @@ nav {
 
 .home {
   width: 900px;
-  margin: auto; }
+  margin: auto;
+  padding-top: 20px; }
 
 .photo {
   position: relative;
