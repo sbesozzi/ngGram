@@ -106,27 +106,29 @@ var sarahPhoto = function sarahPhoto(PhotosService, $timeout) {
     scope: {
       photo: '='
     },
-    template: ' \n      <div class="photo">\n        <img ng-src="{{ photo.photo }}">\n        <div class="hidden"><i class="fa fa-heart"></i></div>   \n        <p class="likes">{{ photo.likes }}</p>\n      </div>\n    ',
+    template: ' \n      <div class="photo">\n        <img ng-src="{{ photo.photo }}">\n        <div class="hidden"><i class="fa fa-heart"></i></div>   \n        <p class="likes">{{ photo.likes }} likes</p>\n      </div>\n    ',
 
-    controller: 'HomeController as vm',
+    // controller: 'HomeController as vm',
     link: function link(scope, element, attrs) {
+      // On click show heart
       element.on('dblclick', function () {
-        console.log('clicked!');
 
         element.find('div').removeClass('hidden').addClass('shown');
         $timeout(function () {
           element.find('div').removeClass('shown').addClass('hidden');
         }, 1000);
 
+        // Like counter
         PhotosService.addLike(scope.photo).then(function (res) {
-          console.log(res);
+          console.log('clicked!');
+          //console.log(res);
         });
       });
     }
   };
 };
 
-sarahPhoto.$inject = ['PhotoService', '$timeout'];
+sarahPhoto.$inject = ['PhotosService', '$timeout'];
 
 exports['default'] = sarahPhoto;
 module.exports = exports['default'];
@@ -178,9 +180,9 @@ var PhotosService = function PhotosService($http, PARSE) {
     return $http.get(url, PARSE.CONFIG);
   }
 
+  // Like counter
   function addLike(photoObj) {
     console.log('liked');
-
     photoObj.likes = photoObj.likes + 1;
     return $http.put(url + '/' + photoObj.objectId, photoObj, PARSE.CONFIG);
   }

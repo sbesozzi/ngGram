@@ -10,22 +10,24 @@ let sarahPhoto = function(PhotosService, $timeout) {
       <div class="photo">
         <img ng-src="{{ photo.photo }}">
         <div class="hidden"><i class="fa fa-heart"></i></div>   
-        <p class="likes">{{ photo.likes }}</p>
+        <p class="likes">{{ photo.likes }} likes</p>
       </div>
     `,
 
-    controller: 'HomeController as vm',
+    // controller: 'HomeController as vm',
     link: function (scope, element, attrs) {
+      // On click show heart
       element.on('dblclick', () => {
-        console.log('clicked!');
 
         element.find('div').removeClass('hidden').addClass('shown');
         $timeout(function () {
           element.find('div').removeClass('shown').addClass('hidden');
         }, 1000);
 
+        // Like counter
         PhotosService.addLike(scope.photo).then( (res) => {
-          console.log(res);
+          console.log('clicked!');
+          //console.log(res);
         });
       });
     }
@@ -33,6 +35,6 @@ let sarahPhoto = function(PhotosService, $timeout) {
 
 };
 
-sarahPhoto.$inject = ['PhotoService', '$timeout'];
+sarahPhoto.$inject = ['PhotosService', '$timeout'];
 
 export default sarahPhoto;

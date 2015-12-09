@@ -161,7 +161,7 @@ nav {
 .photo {
   position: relative;
   margin: auto;
-  margin: 15px;
+  margin: 0 15px 15px 15px;
   width: 30%;
   height: auto;
   display: inline-block;
@@ -182,11 +182,15 @@ nav {
     top: 35%;
     font-size: 50px;
     opacity : 1;
-
   }
 
   .fa-heart {
     color: #FFFFFF;
+  }
+
+  .likes {
+    color: #4b4f54;
+    margin-bottom: 0;
   }
 
 }

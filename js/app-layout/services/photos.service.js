@@ -14,9 +14,9 @@ let PhotosService = function($http, PARSE) {
     return $http.get(url, PARSE.CONFIG);
   }
 
+  // Like counter
   function addLike (photoObj) {
     console.log('liked');
-    
     photoObj.likes = photoObj.likes + 1;
     return $http.put(url + '/' + photoObj.objectId, photoObj, PARSE.CONFIG);
   }
