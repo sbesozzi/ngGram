@@ -10,15 +10,15 @@ let sarahPhoto = function(PhotosService, $timeout) {
       <div class="photo">
         <img ng-src="{{ photo.photo }}">
         <div class="hidden"><i class="fa fa-heart"></i></div>   
-        <p class="likes">{{ photo.likes }} likes</p>
+        <p class="likes"> <i class="fa fa-heart"></i> {{ photo.likes }}</p>
       </div>
     `,
 
     // controller: 'HomeController as vm',
     link: function (scope, element, attrs) {
+      
       // On click show heart
       element.on('dblclick', () => {
-
         element.find('div').removeClass('hidden').addClass('shown');
         $timeout(function () {
           element.find('div').removeClass('shown').addClass('hidden');

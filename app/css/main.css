@@ -8418,18 +8418,21 @@ ul {
 
 .top-bar {
   background: #FFFFFF;
-  height: 3rem; }
+  height: 4rem;
+  padding-top: .5em; }
   .top-bar .title-area .name a {
     color: #09477D;
     font-size: 1.2rem;
-    font-family: 'Rochester', cursive; }
+    font-family: 'Rochester', cursive;
+    padding-left: 8.5em; }
 
 nav {
   border-bottom: 1px solid #EDEEEE; }
   nav .top-bar-section .right {
-    height: 25px; }
-    nav .top-bar-section .right li {
-      margin-left: 15px; }
+    height: 25px;
+    margin-right: 9.5em; }
+  nav .top-bar-section li {
+    margin-left: 15px; }
   nav .top-bar-section li a:not(.button) {
     background: #FFFFFF !important;
     color: #84878B;
@@ -8471,15 +8474,15 @@ nav {
   background: url(https://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-15/s640x640/sh0.08/e35/12105186_1017270565013559_139675607_n.jpg);
   background-size: 100%; }
 
-.profile-title {
-  color: #4b4f54; }
-  .profile-title h3 {
-    width: 250px;
-    margin: 0;
-    font-size: 32px; }
-  .profile-title a {
-    width: 200px;
-    margin: 0; }
+.profile-title h3 {
+  width: 250px;
+  margin: 0;
+  font-size: 32px;
+  color: #5D5D5D; }
+
+.profile-title a {
+  width: 200px;
+  margin: 0; }
 
 .profile-info {
   width: 585px;
@@ -8534,7 +8537,9 @@ nav {
   .photo .fa-heart {
     color: #FFFFFF; }
   .photo .likes {
-    color: #4b4f54;
+    color: #C8C8C8;
     margin-bottom: 0; }
+    .photo .likes i {
+      color: #C8C8C8; }
 
 /*# sourceMappingURL=main.css.map */

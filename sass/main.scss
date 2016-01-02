@@ -18,12 +18,14 @@ ul {
 
 .top-bar {
   background: #FFFFFF;
-  height: 3rem;
+  height: 4rem;
+  padding-top: .5em;
 
   .title-area .name a {
     color: #09477D;
     font-size: 1.2rem;
     font-family: 'Rochester', cursive;
+    padding-left: 8.5em;
 
   }
 }
@@ -31,9 +33,15 @@ ul {
 nav {
   border-bottom: 1px solid #EDEEEE;
 
-  .top-bar-section .right {
-    // border-bottom: 1px solid #cccccc;
-    height: 25px;
+
+  .top-bar-section  {
+
+    .right {
+      // border-bottom: 1px solid #cccccc;
+      height: 25px;
+      margin-right: 9.5em;
+    }
+  
 
     li {
       margin-left: 15px;
@@ -100,12 +108,13 @@ nav {
 }
 
 .profile-title {
-  color: #4b4f54;
+  // color: #757575;
 
   h3 {
     width: 250px;
     margin: 0;
     font-size: 32px;
+    color: #5D5D5D;
 
   }
 
@@ -189,8 +198,12 @@ nav {
   }
 
   .likes {
-    color: #4b4f54;
+    color: #C8C8C8;
     margin-bottom: 0;
+
+    i {
+      color: #C8C8C8;
+    }
   }
 
 }
